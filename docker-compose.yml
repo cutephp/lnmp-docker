@@ -1,0 +1,37 @@
+version: "2"
+
+services:
+  alpine:
+    build: ./alpine
+    image: cutephp/alpine
+
+  mysql:
+    build: ./mysql
+    image: cutephp/mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABSE: db
+
+  php: 
+    build: ./php
+    image: cutephp/php
+    ports: 
+      - 9000:9000
+    links:
+      - mysql
+    depends_on:
+      - alpine
+    volumes: 
+      - ./php/app:/app
+
+  nginx:
+    build: ./nginx
+    image: cutephp/nginx
+    ports: 
+      - 80:80
+    links:
+      - php
