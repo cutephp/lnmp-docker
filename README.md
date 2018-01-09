@@ -146,9 +146,9 @@ $con = mysqli_connect('mysql','root','root');
 
 
 
-##### 如何远程调试
+### 如何远程调试
 
-####php容器的dockerfile修改
+#### php容器的dockerfile修改
 目前在dockerfile中是写死了本机的ip作为remote_host的，包括php5和php7，而且是加了xdebug的log文件的，不需要的话各位按自己情况进行修改。
 
 ![php5](http://ww2.sinaimg.cn/large/62b80425gw1f9b7q5y3wuj20r806pac7.jpg)
