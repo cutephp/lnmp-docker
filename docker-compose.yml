@@ -23,8 +23,10 @@ services:
       - 9000:9000
     links:
       - mysql
+      - redis
     depends_on:
       - alpine
+      - redis
     volumes: 
       - ./php/app:/app
 
@@ -35,3 +37,11 @@ services:
       - 80:80
     links:
       - php
+  redis:
+    build: ./redis
+    image: cutephp/redis
+    ports:
+      - 6379:6379
+    depends_on:
+      - alpine
+    restart: always

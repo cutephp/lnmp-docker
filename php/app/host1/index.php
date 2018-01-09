@@ -1,4 +1,5 @@
 <?php 
-	$con = mysqli_connect("mysql",'root','root');
-	var_dump($con);
+	$redis = new Redis();
+	$redis->connect('redis',6379);
+	echo $redis->ping();
  ?>
